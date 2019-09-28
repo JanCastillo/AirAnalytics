@@ -1,36 +1,31 @@
-console.log(data);
+console.log(avianca);
 
-var origen = data.map(d => o.Destino);
-console.log(destino);
+var selector = d3.select("select")
 
-var llegada = data.map(ll => ll.Hora Llegada);
-console.log(llegada);
+selector.on("change", function() {
 
-var precio = data.map(p => p.Desde);
-console.log(precio);
+    var input_value = selector.property("value");
+    console.log(input_value);
+    var chosen_airport = avianca.filter(d => d.Destino === input_value);
+    var salida = chosen_airport.map(h => h.Hora_Salida);
+    var precio = chosen_airport.map(p => p.Desde);
+    console.log(salida);
+    var trace1 = {
+        x: salida,
+        y: precio,
+        type: "scatter",
+        mode: "lines",
+    };
+    
+    var data = [trace1];
+    
+    var layout = {
+        title: "AVIANCA",
+        width: 1500,
+        height: 600,
+    };
+    
+    Plotly.newPlot("plot", data, layout);
+    
+});
 
-var trace1 = {
-    x: names,
-    y: greek,
-    type: "bar",
-    name: "Greek"
-};
-
-var trace2 = {
-    x: names,
-    y: roman,
-    type: "scatter",
-    name: "Roman"
-};
-
-console.log(trace1);
-
-var data = [trace1, trace2];
-
-var layout = {
-    title: "Green vs Roman",
-    width: 1500,
-    height: 600,
-};
-
-Plotly.newPlot("plot", data, layout);
