@@ -1,15 +1,26 @@
 console.log(avianca);
+console.log(aeromexico);
 
-var selector = d3.select("select")
+var destination = d3.select("#destination");
+var airline = d3.select("#airline");
 
-selector.on("change", function() {
+airline.on("change", function() {
 
-    var input_value = selector.property("value");
-    console.log(input_value);
-    var chosen_airport = avianca.filter(d => d.Destino === input_value);
-    var salida = chosen_airport.map(h => h.Hora_Salida);
-    var precio = chosen_airport.map(p => p.Desde);
-    console.log(salida);
+    var airline_value = airline.property("value");
+
+    if (airline_value === "AVIANCA"){
+        let dest_value = destination.property("value");
+        let chosen_airport = avianca.filter(d => d.Destino === dest_value);
+        var salida = chosen_airport.map(h => h.Hora_Salida);
+        var precio = chosen_airport.map(p => p.Desde);
+    } else if (airline_value === "AEROMEXICO"){
+        let dest_value = destination.property("value");
+        let chosen_airport = aeromexico.filter(d => d.Destino === dest_value);
+        console.log(chosen_airport);
+        var salida = chosen_airport.map(h => h.Hora_Salida);
+        var precio = chosen_airport.map(p => p.Desde);
+    }
+
     var trace1 = {
         x: salida,
         y: precio,
@@ -26,6 +37,5 @@ selector.on("change", function() {
     };
     
     Plotly.newPlot("plot", data, layout);
-    
-});
 
+});
