@@ -8,16 +8,31 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <select id="airline">
-        <option>AEROMEXICO</option>
-        <option>AVIANCA</option>
+    <select id="day">
+        <option>sept30</option>
+        <option>oct01</option>
     </select>
     <select id="destination">
+        <option>DEN</option>
+        <option>HAV</option>
+        <option>ORD</option>
+        <option>JFK</option>
         <option>LAX</option>
+        <option>BCN</option>
+        <option>MAD</option>
+        <option>YYZ</option>
+        <option>MCO</option>
+        <option>SFO</option>
+        <option>LAS</option>
+        <option>MUC</option>
+        <option>YUL</option>
         <option>MIA</option>
+        <option>CUN</option>
     </select>
-    <div id="plot" align="center"></div>
-    
+    <button id="filter">FILTER</button>
+    <div id="plot1"></div>
+    <div id="plot2"></div>
+    <div id="plot3"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
     <script src="data.js"></script>
     <script src="plots.js"></script>
