@@ -309,37 +309,37 @@ ual_grouped = grouped_df3.min()
 ual_grouped.reset_index(inplace=True)
 
 
-# In[32]:
+# In[28]:
 
 
 amx_grouped["Name"] = "AMX"
 
 
-# In[37]:
+# In[29]:
 
 
 avi_grouped["Name"] = "AVI"
 
 
-# In[39]:
+# In[30]:
 
 
 ual_grouped["Name"] = "UAL"
 
 
-# In[98]:
+# In[31]:
 
 
 df4 = amx_grouped.append(avi_grouped, ignore_index=True)
 
 
-# In[99]:
+# In[32]:
 
 
 df5 = df4.append(ual_grouped, ignore_index = True)
 
 
-# In[101]:
+# In[33]:
 
 
 conditions = [
@@ -402,32 +402,55 @@ lon_choices = [-86.873455,
                -73.873987]
 
 
-# In[102]:
+# In[34]:
 
 
 df5["Lat"] = np.select(conditions, lat_choices, default="N/A")
 
 
-# In[105]:
+# In[35]:
 
 
 df5["Lon"] = np.select(conditions, lon_choices, default="N/A")
 
 
-# In[109]:
+# In[36]:
 
 
 df5.to_csv("consolidated.csv")
 
 
-# In[111]:
+# In[37]:
 
 
 df5.to_json("consolidated_json.js", orient="records")
 
 
-# In[ ]:
+# In[38]:
 
 
+from sqlalchemy import create_engine, inspect, func, MetaData
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.orm import Session
+db_string = "postgres://postgres:pkmn.2012@localhost:5432/Air_Analytics"
+db = create_engine(db_string)
 
+
+# In[39]:
+
+
+tables = db.table_names()
+print(tables)
+
+
+# In[40]:
+
+
+day = input("Select a table (i.e. oct01): ")
+
+
+# In[41]:
+
+
+df5.to_sql(name=day, con=db, if_exists='append', index=False)
 
