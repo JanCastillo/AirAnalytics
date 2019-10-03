@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AirAnalytics</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <select id="day">
+        <option>oct01</option>
+        <option>oct02</option>
+    </select>
+    <select id="destination">
+        <!-- ver como crear dinámicamente la lista, revisa plotly-challenge -->
+        <option>CUN</option>
+        <option>HAV</option>
+        <option>ORD</option>
+        <option>JFK</option>
+        <option>LAX</option>
+        <option>BCN</option>
+        <option>MAD</option>
+        <option>YYZ</option>
+        <option>MCO</option>
+        <option>SFO</option>
+        <option>LAS</option>
+        <option>MUC</option>
+        <option>YUL</option>
+        <option>MIA</option>
+        <option>DEN</option>
+    </select>
+    <button id="filter">FILTER</button>
+    <div id="plot1"></div>
+    <div id="plot2"></div>
+    <div id="plot3"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    <script src="{{ url_for('static', filename='js/plots.js') }}"></script>
+    
+</body>
+</html>
