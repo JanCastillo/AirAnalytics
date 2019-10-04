@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AirAnalytics</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
     <select id="day">
@@ -40,7 +41,29 @@
     <button id="add">ADD</button>
     <div id="plot1"></div>
     <div id="plot2"></div>
-    <div id="plot3"></div>
+    <select id="table-day">
+        <option>oct01</option>
+        <option>oct02</option>
+        <option>oct03</option>
+    </select>
+    <button id="table_data">TABLE</button>
+    <div id="table-area" class="">
+        <table id="prices-table" class="table table-striped">
+          <thead>
+            <tr>
+              <th class="table-head">Hora Salida</th>
+              <th class="table-head">Destino</th>
+              <th class="table-head">Origen</th>
+              <th class="table-head">Hora Llegada</th>
+              <th class="table-head">Precio</th>
+              <th class="table-head">Aerolinea</th>
+              <th class="table-head">Lat</th>
+              <th class="table-head">Lon</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
     <script src="{{ url_for('static', filename='js/plots.js') }}"></script>
     
