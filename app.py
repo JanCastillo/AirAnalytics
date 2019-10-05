@@ -10,17 +10,21 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-db_string = "postgres://postgres:adriana@localhost:5432/Air_Analytics"
+db_string = "postgres://dgvhnhvgmlvyas:9ec80f4b1f38b037e7f4ec194639c23e0a51391ba0125294f6cdc29afbfe2c91@ec2-54-235-86-101.compute-1.amazonaws.com:5432/ddjlbrhg56vtvf"
 db = create_engine(db_string)
 
 session = Session(db)
 meta = MetaData()
 meta.reflect(bind=db)
 
+<<<<<<< HEAD
 app.config["SECRET_KEY"] = "mysecretkey"
 
 
 
+=======
+@app.route("/")
+>>>>>>> 20b65f781059454f3341314febe98220f8283bf8
 @app.route("/index.html")
 def inicio():
     return render_template("index.html")
