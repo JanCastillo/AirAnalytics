@@ -1,0 +1,97 @@
+{% extends "base.html" %} {% block content %}
+<script>
+    function $(x) {
+        return document.querySelectorAll(x);
+    }
+
+    $(".sidebar .sidebar-wrapper .nav li ")[0].classList.remove('active');
+    document.getElementById('sidebarTable').className += " active"
+
+    document.getElementById('pageTitle').innerHTML = "Tables"
+</script>
+
+<div class="content">
+
+    <div class="content">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card ">
+                        <div class="card-header card-header-success card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">grid_on</i>
+                            </div>
+                            <h4 class="card-title">Tables</h4>
+                        </div>
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Day</label><br>
+                                        <select class="btn btn-black dropdown-toggle" data-style="btn btn-link" id="table-day" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <option Value="oct01">octubre 01, 2019</option>
+                                                        <option value="oct02">octubre 02, 2019</option>
+                                                        <option value="oct03">octubre 03, 2019</option>
+                                                        <option value="oct04">octubre 04, 2019</option>
+                                                        <option value="oct05">octubre 05, 2019</option>
+                                                    </select>
+                                        <button class="btn btn-danger" id="table_data">TABLE</button>
+                                    </div>
+
+
+                                    <div class="table-responsive">
+                                        <table class="table" id="prices-table">
+                                            <thead class="text-primary">
+                                                <tr>
+                                                    <th class="table-head">Hora Salida</th>
+                                                    <th class="table-head">Destino</th>
+                                                    <th class="table-head">Origen</th>
+                                                    <th class="table-head">Hora Llegada</th>
+                                                    <th class="table-head">Precio</th>
+                                                    <th class="table-head">Aerolinea</th>
+                                                    <th class="table-head">Lat</th>
+                                                    <th class="table-head">Lon</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class='tbody'></tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row"></div>
+</div>
+</div>
+</div>
+
+
+
+<!-- D3 Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="/static/js/data.js"></script>
+<script src="/static/js/plots.js"></script>
+<script>
+    // all_data_table('oct01')
+</script>
+
+<script>
+    function $(x) {
+        return document.querySelectorAll(x);
+    }
+
+    $(".sidebar .sidebar-wrapper .nav li ")[0].classList.remove('active');
+    document.getElementById('sidebarTable').className += " active"
+
+    document.getElementById('pageTitle').innerHTML = "Tables"
+</script>
+
+{% endblock %}

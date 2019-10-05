@@ -1,0 +1,53 @@
+{% extends "base.html" %} {% block content %}
+<style>
+    #map {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background-color: rgb(229, 227, 223);
+    }
+</style>
+
+<script>
+    function $(x) {
+        return document.querySelectorAll(x);
+    }
+
+    $(".sidebar .sidebar-wrapper .nav li ")[0].classList.remove("active");
+    document.getElementById("sidebarMaps").className += " active";
+
+    document.getElementById("pageTitle").innerHTML = "Maps";
+</script>
+
+<div class="content">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card ">
+                        <div class="card-header card-header-success card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">where_to_vote</i>
+                            </div>
+                            <h4 class="card-title">Map</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="map map-big" style="position: relative; overflow: hidden;">
+                                <div id="map"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- API key -->
+<script type="text/javascript" src="/static/js/config.js"></script>
+<!-- JS  -->
+<script type="text/javascript" src="/static/js/logicmap.js"></script>
+
+{% endblock %}
