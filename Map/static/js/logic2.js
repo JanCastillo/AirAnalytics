@@ -91,7 +91,9 @@ var endIcon = L.icon({
 	iconAnchor:   [15, 30], // point of the icon which will correspond to marker's location
 });
 
-var dest="JFK";
+var dest="MUC";
+var price="$ 34.3"
+var aerolinea="Avianca"
 
 latDest=0
 lngDest=1
@@ -126,16 +128,22 @@ link.getFeaturesByProperty = function(key, value) {
       // if you want to put a marker at the beginning and at the end of the path :
     var mstart = L.marker(coordinateArray[0], {icon: startIcon}).addTo(map);
     var mend = L.marker(coordinateArray[coordinateArray.length - 1], {icon: endIcon}).addTo(map);
-     // here is the moving marker (6 seconds animation)
+    
     var myMovingMarker = L.Marker.movingMarker(coordinateArray, 8000, {
           autostart: false, icon: planeIcon
-     });
+     }).bindPopup("<h3>" + dest + "</h3><hr><p>Origen:  Mex</p><br><p> " + price +", Airline: "+ aerolinea + "</p>");
     map.addLayer(myMovingMarker);
+    myMovingMarker.on('mouseover', function (e) {
+      this.openPopup();
+      myMovingMarker.on('mouseout', function (e) {
+        this.closePopup();
+    });
+    });
     myMovingMarker.start();
 
 
 
-    
+
 // // Grabbing our GeoJSON data..
 // d3.json(link, function(data) {
 //   // console.log(data);
