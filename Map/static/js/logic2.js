@@ -12,10 +12,11 @@ light = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr}),
 satellitestreets = L.tileLayer(mbUrl, {id: 'mapbox.streets-satellite', attribution: mbAttr});
 
 var map = L.map('map', {
-center: [19.436 , -99.072], /*Default location */
+center: [28.918 , -43.643], /*Default location */
 zoom: 3, /*Default Zoom */
 layers: [light] // Default basemaplayer on startrup, can also give another layer here to show by default)
 });
+
 
 var baseLayers = {
 "Grayscale": grayscale,
@@ -67,27 +68,74 @@ var endIcon = L.icon({
 	iconAnchor:   [15, 30], // point of the icon which will correspond to marker's location
 });
 
+var dest="JFK";
+
+latDest=0
+lngDest=1
+
+
 // // Grabbing our GeoJSON data..
- d3.json(link, function(data) {
-//   // Creating a GeoJSON layer with the retrieved data
+d3.json(link, function(data) {
+  // console.log(data);
+  var layer=data;
+  layer.getFeaturesByProperty = function(key, value) {
+    return this.features.filter(function(feature){
+      if (feature.properties[key] === value) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  };
+  
+  var feats = layer.getFeaturesByProperty('IATA_Code', dest);
+  latDest = feats[0].properties.Latitude_Decimal_Degrees;
+  lngDest = feats[0].properties.Longitude_Decimal_Degrees;
+  console.log(latDest);
+  console.log(lngDest);
+
+  var latCenter= latDest-19.436;
+  var lngCenter= (lngDest+-99.072)/2;
+ 
+  var coordinateArray = [ [19.436 , -99.072], [latDest, lngDest ] ];
+  // or for example
+  // here is the line you draw (if you want to see the animated marker path on the map)
+  var myPolyline = L.polyline(coordinateArray, {color: "red", smoothFactor: 1, opacity: 0.2});
+  myPolyline.addTo(map);
+  // i don't know if i understood your question correctly
+  // if you want to put a marker at the beginning and at the end of the path :
+  var mstart = L.marker(coordinateArray[0], {icon: startIcon}).addTo(map);
+ var mend = L.marker(coordinateArray[coordinateArray.length - 1], {icon: endIcon}).addTo(map);
+ // here is the moving marker (6 seconds animation)
+  var myMovingMarker = L.Marker.movingMarker(coordinateArray, 8000, {
+      autostart: false, icon: planeIcon
+  });
+  map.addLayer(myMovingMarker);
+  myMovingMarker.start();
+
   L.geoJson(data, myLayerOptions).addTo(map);
 //    L.geoJson(data).addTo(map);
  });
 
 
+//  var latDest= 48.354
+//  var lngDest= 11.786
+//  var latCenter= latDest-19.436;
+//  var lngCenter= (lngDest+-99.072)/2;
 
- var coordinateArray = [ [19.436 , -99.072], [48.354, 11.786] ];
- // or for example
- // here is the line you draw (if you want to see the animated marker path on the map)
- var myPolyline = L.polyline(coordinateArray, {color: "red", smoothFactor: 1, opacity: 0.2});
- myPolyline.addTo(map);
- // i don't know if i understood your question correctly
- // if you want to put a marker at the beginning and at the end of the path :
- var mstart = L.marker(coordinateArray[0], {icon: startIcon}).addTo(map);
-  var mend = L.marker(coordinateArray[coordinateArray.length - 1], {icon: endIcon}).addTo(map);
-// here is the moving marker (6 seconds animation)
- var myMovingMarker = L.Marker.movingMarker(coordinateArray, 6000, {
-     autostart: false, icon: planeIcon
- });
- map.addLayer(myMovingMarker);
- myMovingMarker.start();
+//  var coordinateArray = [ [19.436 , -99.072], [latDest, lngDest ] ];
+//  // or for example
+//  // here is the line you draw (if you want to see the animated marker path on the map)
+//  var myPolyline = L.polyline(coordinateArray, {color: "red", smoothFactor: 1, opacity: 0.2});
+//  myPolyline.addTo(map);
+//  // i don't know if i understood your question correctly
+//  // if you want to put a marker at the beginning and at the end of the path :
+//  var mstart = L.marker(coordinateArray[0], {icon: startIcon}).addTo(map);
+// var mend = L.marker(coordinateArray[coordinateArray.length - 1], {icon: endIcon}).addTo(map);
+// // here is the moving marker (6 seconds animation)
+//  var myMovingMarker = L.Marker.movingMarker(coordinateArray, 8000, {
+//      autostart: false, icon: planeIcon
+//  });
+//  map.addLayer(myMovingMarker);
+//  myMovingMarker.start();
+
