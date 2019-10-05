@@ -412,7 +412,7 @@ df5["Lat"] = np.select(conditions, lat_choices, default="N/A")
 
 
 df5["Lon"] = np.select(conditions, lon_choices, default="N/A")
-
+df5["Desde"] = df5["Desde"].astype('int64')
 
 # In[36]:
 
@@ -432,7 +432,7 @@ df5.to_json("consolidated_json.js", orient="records")
 from sqlalchemy import create_engine, inspect, func, MetaData
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-db_string = "postgres://postgres:pkmn.2012@localhost:5432/Air_Analytics"
+db_string = "postgres://dgvhnhvgmlvyas:9ec80f4b1f38b037e7f4ec194639c23e0a51391ba0125294f6cdc29afbfe2c91@ec2-54-235-86-101.compute-1.amazonaws.com:5432/ddjlbrhg56vtvf"
 db = create_engine(db_string)
 
 
