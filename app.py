@@ -17,14 +17,7 @@ session = Session(db)
 meta = MetaData()
 meta.reflect(bind=db)
 
-<<<<<<< HEAD
-app.config["SECRET_KEY"] = "mysecretkey"
 
-
-
-=======
-@app.route("/")
->>>>>>> 20b65f781059454f3341314febe98220f8283bf8
 @app.route("/index.html")
 def inicio():
     return render_template("index.html")
@@ -43,6 +36,7 @@ def map():
 @app.route("/table.html")
 def table():
     return render_template("table.html")
+
 
 @app.route("/")
 @app.route("/home.html")
