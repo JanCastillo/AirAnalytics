@@ -137,8 +137,13 @@ link.getFeaturesByProperty = function(key, value) {
      // here is the moving marker (6 seconds animation)
     var myMovingMarker = L.Marker.movingMarker(coordinateArray, 8000, {
           autostart: false, icon: planeIcon
-     });
+     }).bindPopup("<h3>" + dest + "</h3><hr><p>Origen:  Mex</p><br><p> " + price +", Airline: "+ aerolinea + "</p>");;
     map.addLayer(myMovingMarker);
+    myMovingMarker.on('mouseover', function (e) {
+      this.openPopup()});
+      myMovingMarker.on('mouseout', function (e) {
+        this.closePopup();
+    });
     myMovingMarker.start();
 
 }
