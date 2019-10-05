@@ -20,7 +20,7 @@ meta.reflect(bind=db)
 app.config["SECRET_KEY"] = "mysecretkey"
 
 
-@app.route("/")
+
 @app.route("/index.html")
 def inicio():
     return render_template("index.html")
@@ -40,6 +40,7 @@ def map():
 def table():
     return render_template("table.html")
 
+@app.route("/")
 @app.route("/home.html")
 def home():
     return render_template("home.html")

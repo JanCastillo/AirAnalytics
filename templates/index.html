@@ -1,9 +1,22 @@
  {% extends "base.html" %} {% block content %}
+
+<style>
+    #map {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background-color: rgb(229, 227, 223);
+    }
+</style>
+
+
 <div class="content">
 
     <div class="content">
-
         <div class="container-fluid">
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="card ">
@@ -14,50 +27,98 @@
                             <h4 class="card-title">Flights Prices for different Airlines</h4>
                         </div>
                         <div class="card-body ">
-                            <div class="row">
 
-                                <!-- <div class="dropdown">
-                                    <select class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="airline">
-                                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                   <a class="dropdown-item"><option>Avianca</option></a> 
-                                                    <option class="dropdown-item">Aeromexico</option>
-                                               </div>
-                                    </select>
-
-                                </div>
-                                <select class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="destination">
-                                            <option>LAX</option>
-                                            <option>MIA</option>
-                                          </select> -->
-                                <div class="col-lg-5 col-md-6 col-sm-3">
-                                    <div class="dropdown ">
-                                        <select class="btn  dropdown-toggle btn-danger " type="button" aria-haspopup="true" aria-expanded="false" id="airline">
-                                                     
-                                                <option class="dropdown-item" value="AVIANCA">Avianca</option>
-                                                <option class="dropdown-item" value="AEROMEXICO">Aeromexico</option>
-                                        </select>
-                                        <select class="btn  dropdown-toggle btn-rose" type="button" aria-haspopup="true" aria-expanded="false" id="destination">
-                                                    <option class="dropdown-item">LAX</option>
-                                                    <option class="dropdown-item">MIA</option>
-                                            </select>
-
-                                    </div>
-                                </div>
+                            <div class="map map-big" style="position: relative; overflow: hidden;">
+                                <div id="map"></div>
 
 
                             </div>
+                            <div class="row">
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Day</label><br>
+                                        <select class="btn btn-black dropdown-toggle" data-style="btn btn-link" id="day" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <option Value="oct01">octubre 01, 2019</option>
+                                                            <option value="oct02">octubre 02, 2019</option>
+                                                            <option value="oct03">octubre 03, 2019</option>
+                                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2  ">
+                                    <div class="form-group  ">
+                                        <label>Destination</label><br>
+                                        <select class="btn btn-black dropdown-toggle" id="destination">
+                                                            <option value="CUN">Cancun</option>
+                                                            <option value="HAV">Havana</option>
+                                                            <option valur="ORD">Chicago</option>
+                                                            <option value="JFK">New York JFK</option >
+                                                            <option value="LAX">Los Angeles</option>
+                                                            <option value="BCN">Barcelona</option>
+                                                            <option value="MAD">Madrid</option>
+                                                            <option value="YYZ">Toronto</option>
+                                                            <option value="MCO">Florida</option>
+                                                            <option value="SFO">San Francisco</option>
+                                                            <option value="LAS">Las Vegas</option>
+                                                            <option value='MUC'>Munich</option>
+                                                            <option value="YUL">Montreal</option>
+                                                            <option value="MIA">Miami</option>
+                                                            <option value="DEN">Denver</option>
+                                                            </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2  ">
+                                    <div class="form-group ">
+                                        <label>Airline</label><br>
+                                        <select class="btn btn-black dropdown-toggle" id="airline">
+                                                                <option value="AMX">Aeromexico</option>
+                                                            <option value="AVI">Aviacsa</option>
+                                                            <option value="UAL">United Airlines</option>
+                                                                </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 pt-4 mt-3">
+                                    <button class="btn btn-danger" id="filter">
+                                                                <span class="btn-label">
+                                                                  <i class="material-icons">assessment</i>
+                                                                </span>
+                                                                FILTER
+                                                              </button>
+                                </div>
+                                <div class="col-md-1 pt-4 mt-3">
+                                    <button class="btn btn-danger" id="add">
+                                                <span class="btn-label">
+                                                  <i class="material-icons">plus_one</i>
+                                                </span>
+                                                ADD
+                                              </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <div id="plot1"></div>
+                            <div id="plot2"></div>
+                            <div id="plot3"></div>
 
                         </div>
                     </div>
+
+
                 </div>
+
             </div>
         </div>
-        <div class="row"></div>
     </div>
 </div>
+<div class="row"></div>
+</div>
+</div>
 </div>
 
-
+<!-- API key -->
+<script type="text/javascript" src="/static/js/config.js"></script>
+<!-- JS  -->
+<script type="text/javascript" src="/static/js/logicmap.js"></script>
 
 <!-- D3 Library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
