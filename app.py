@@ -62,6 +62,21 @@ def test(day):
     
     return jsonify(query)
 
+@app.route("/map/<day>/<destino>")
+def plane(day, destino):
+    
+    choice = meta.tables[day]
+
+    query2 = session.query(
+    choice.columns.Destino,
+    choice.columns.Hora_Salida,
+    choice.columns.Desde,
+    choice.columns.Name
+    ).\
+    filter(choice.columns.Destino == destino).order_by(choice.columns.Desde).all() #hay que convertir los precios de UAL a pesos para ya no meter condicionales
+    
+    return jsonify(query2[0])    
+
 @app.errorhandler(404)
 @app.route("/error.html")
 def page_not_found(e):

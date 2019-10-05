@@ -91,18 +91,30 @@ var endIcon = L.icon({
 	iconAnchor:   [15, 30], // point of the icon which will correspond to marker's location
 });
 
-var destination = d3.select("#map-destination");
+var map_destination = d3.select("#map-destination");
+var map_day = d3.select("#map-day")
 var mapbutton = d3.select("#map-button");
 
 mapbutton.on("click", function() {
 
-  let dest_value = destination.property("value");
+  let dest_value = map_destination.property("value");
+  let day_value = map_day.property("value")
+  
+    querystring = `/map/${day_value}/${dest_value}`
 
-  buildmap(dest_value);
+    d3.json(querystring).then((x) => {
+      let destino = x[0]
+      let salida = x[1]
+      let price = x[2]
+      let airline = x[3]
+
+      buildmap(destino, price, airline, salida)
+      
+    });
 
 });
 
-function buildmap(dest) {
+function buildmap(dest, price, aerolinea, salida) {
   
 L.geoJson(link, myLayerOptions).addTo(map)
 
@@ -137,7 +149,7 @@ link.getFeaturesByProperty = function(key, value) {
      // here is the moving marker (6 seconds animation)
     var myMovingMarker = L.Marker.movingMarker(coordinateArray, 8000, {
           autostart: false, icon: planeIcon
-     }).bindPopup("<h3>" + dest + "</h3><hr><p>Origen:  Mex</p><br><p> " + price +", Airline: "+ aerolinea + "</p>");;
+     }).bindPopup("<h3>" + dest + "</h3><hr><li>Origen: MEX</li>" +"<li> Menor Precio: " + price + "</li>" + "<li> Hora Salida: " + salida + "</li>" + "<li>" + aerolinea + "</li>");;
     map.addLayer(myMovingMarker);
     myMovingMarker.on('mouseover', function (e) {
       this.openPopup()});
