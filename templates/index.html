@@ -18,93 +18,53 @@
         <div class="container-fluid">
 
             <div class="row">
-                <div class="col-md-12">
+
+                <div class="col-md-4">
                     <div class="card ">
                         <div class="card-header card-header-success card-header-icon">
                             <div class="card-icon">
                                 <i class="material-icons">flight_takeoff</i>
                             </div>
-                            <h4 class="card-title">Flights Prices for different Airlines</h4>
+                            <h4 class="card-title">AMX Latest Prices</h4>
                         </div>
                         <div class="card-body ">
-                            <div class="row">
-                                <div class="col-md-2 ">
-                                    <div class="form-group">
-                                        <label>Day</label><br>
-                                        <select class="btn btn-black dropdown-toggle" data-style="btn btn-link" id="day" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <option Value="oct01">octubre 01, 2019</option>
-                                                            <option value="oct02">octubre 02, 2019</option>
-                                                            <option value="oct03">octubre 03, 2019</option>
-                                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-2  ">
-                                    <div class="form-group  ">
-                                        <label>Destination</label><br>
-                                        <select class="btn btn-black dropdown-toggle" id="destination">
-                                                            <option value="DEN">Denver</option>
-                                                            <option value="CUN">Cancun</option>
-                                                            <option value="HAV">Havana</option>
-                                                            <option valur="ORD">Chicago</option>
-                                                            <option value="JFK">New York JFK</option >
-                                                            <option value="LAX">Los Angeles</option>
-                                                            <option value="BCN">Barcelona</option>
-                                                            <option value="MAD">Madrid</option>
-                                                            <option value="YYZ">Toronto</option>
-                                                            <option value="MCO">Florida</option>
-                                                            <option value="SFO">San Francisco</option>
-                                                            <option value="LAS">Las Vegas</option>
-                                                            <option value='MUC'>Munich</option>
-                                                            <option value="YUL">Montreal</option>
-                                                            <option value="MIA">Miami</option>
-                                                            </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-2  ">
-                                    <div class="form-group ">
-                                        <label>Airline</label><br>
-                                        <select class="btn btn-black dropdown-toggle" id="airline">
-                                                                <option value="AMX">Aeromexico</option>
-                                                            <option value="AVI">Avianca</option>
-                                                            <option value="UAL">United Airlines</option>
-                                                                </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 pt-4 mt-3">
-                                    <button class="btn btn-danger" id="filter">
-                                                                <span class="btn-label">
-                                                                  <i class="material-icons">assessment</i>
-                                                                </span>
-                                                                FILTER
-                                                              </button>
-                                </div>
-                                <div class="col-md-1 pt-4 mt-3">
-                                    <button class="btn btn-danger" id="add">
-                                                <span class="btn-label">
-                                                  <i class="material-icons">plus_one</i>
-                                                </span>
-                                                ADD
-                                              </button>
-                                </div>
-                            </div>
+                                <div id="AMX-latest"></div>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="card-body">
-                            <div id="plot1"></div>
-                            <div id="plot2"></div>
-                            <div id="plot3"></div>
-
+                <div class="col-md-4">
+                        <div class="card ">
+                            <div class="card-header card-header-success card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">flight_takeoff</i>
+                                </div>
+                                <h4 class="card-title">AVI Latest Prices</h4>
+                            </div>
+                            <div class="card-body ">
+                                <div id="AVI-latest"></div>
+                            </div>
                         </div>
                     </div>
 
-
-                </div>
+                    <div class="col-md-4">
+                            <div class="card ">
+                                <div class="card-header card-header-success card-header-icon">
+                                    <div class="card-icon">
+                                        <i class="material-icons">flight_takeoff</i>
+                                    </div>
+                                    <h4 class="card-title">UAL Latest Prices</h4>
+                                </div>
+                                <div class="card-body ">
+                                        <div id="UAL-latest"></div>
+                                </div>
+                            </div>
+                        </div>
 
             </div>
         </div>
     </div>
 </div>
-<div class="row"></div>
 </div>
 </div>
 </div>
@@ -112,7 +72,7 @@
 <!-- API key -->
 <script type="text/javascript" src="/static/js/config.js"></script>
 <!-- JS  -->
-<script type="text/javascript" src="/static/js/logicmap.js"></script>
+<script type="text/javascript" src="/static/js/plots.js"></script>
 
 <!-- D3 Library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>

@@ -17,7 +17,6 @@ session = Session(db)
 meta = MetaData()
 meta.reflect(bind=db)
 
-
 @app.route("/index.html")
 def inicio():
     return render_template("index.html")
@@ -75,7 +74,27 @@ def plane(day, destino):
     ).\
     filter(choice.columns.Destino == destino).order_by(choice.columns.Desde).all() #hay que convertir los precios de UAL a pesos para ya no meter condicionales
     
-    return jsonify(query2[0])    
+    return jsonify(query2[0]) 
+
+@app.route("/latest")
+def latest():
+
+    tables = db.table_names()
+    latest_table = tables[-1]
+
+    choice = meta.tables[latest_table]
+
+    query3 = session.query(
+    choice.columns.Hora_Salida,
+    choice.columns.Destino, 
+    choice.columns.Desde,
+    choice.columns.Name,
+    ).\
+    order_by(choice.columns.Destino).all()
+
+    #AGREGA UN ORDER BY PARA ORDENAR ALFABETICAMENTE EL DESTINO
+
+    return jsonify(query3)
 
 @app.errorhandler(404)
 @app.route("/error.html")

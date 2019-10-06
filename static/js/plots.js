@@ -7,6 +7,102 @@ var filter = d3.select("#filter");
 var add = d3.select("#add");
 var table_data = d3.select("#table_data");
 
+var latest = `/latest`
+
+d3.json(latest).then((x) => {
+    let AMX = x.filter(y => y[3] === "AMX")
+    let AMX_salidas = AMX.map(s => s[0])
+    let AMX_destinos = AMX.map(d => d[1])
+    let AMX_precios = AMX.map(p => p[2])
+
+    let AVI = x.filter(y =>y[3] === "AVI")
+    let AVI_salidas = AVI.map(s => s[0])
+    let AVI_destinos = AVI.map(d => d[1])
+    let AVI_precios = AVI.map(p => p[2])
+
+    let UAL = x.filter(y =>y[3] === "UAL")
+    let UAL_salidas = UAL.map(s => s[0])
+    let UAL_destinos = UAL.map(d => d[1])
+    let UAL_precios = UAL.map(p => p[2])
+
+    let AMX_table = [{
+        type: 'table',
+        header: {
+            values: [
+                ["<b>Destino</b>"],
+                ["<b>Desde</b>"],
+                ["<b>Salida</b>"]
+            ],
+            align: "center",
+            line: { width: 1, color: 'black' },
+            fill: { color: "grey" },
+            font: { family: "Arial", size: 12, color: "white" }
+        },
+        cells: {
+            values: [AMX_destinos, AMX_precios, AMX_salidas],
+            align: "center",
+            line: { color: "black", width: 1 },
+            font: { family: "Arial", size: 11, color: ["black"] }
+        }
+    }]
+
+    let AVI_table = [{
+        type: 'table',
+        header: {
+            values: [
+                ["<b>Destino</b>"],
+                ["<b>Desde</b>"],
+                ["<b>Salida</b>"]
+            ],
+            align: "center",
+            line: { width: 1, color: 'black' },
+            fill: { color: "grey" },
+            font: { family: "Arial", size: 12, color: "white" }
+        },
+        cells: {
+            values: [AVI_destinos, AVI_precios, AVI_salidas],
+            align: "center",
+            line: { color: "black", width: 1 },
+            font: { family: "Arial", size: 11, color: ["black"] }
+        }
+    }]
+
+    let UAL_table = [{
+        type: 'table',
+        header: {
+            values: [
+                ["<b>Destino</b>"],
+                ["<b>Desde</b>"],
+                ["<b>Salida</b>"]
+            ],
+            align: "center",
+            line: { width: 1, color: 'black' },
+            fill: { color: "grey" },
+            font: { family: "Arial", size: 12, color: "white" }
+        },
+        cells: {
+            values: [UAL_destinos, UAL_precios, UAL_salidas],
+            align: "center",
+            line: { color: "black", width: 1 },
+            font: { family: "Arial", size: 11, color: ["black"] }
+        }
+    }]
+
+    let table_layout = {
+        margin: {
+            t: 20, //top margin
+            l: 20, //left margin
+            r: 20, //right margin
+            b: 20 //bottom margin
+            }
+    }; 
+
+    Plotly.newPlot('AMX-latest', AMX_table, table_layout);
+    Plotly.newPlot('AVI-latest', AVI_table, table_layout);
+    Plotly.newPlot('UAL-latest', UAL_table, table_layout);
+
+});
+
 table_data.on("click", function() {
     let day_value = table_day.property("value");
     all_data_table(day_value);
