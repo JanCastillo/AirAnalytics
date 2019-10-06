@@ -294,6 +294,8 @@ df3.dropna(inplace=True)
 df3["Desde"] = pd.to_numeric(df3["Desde"]).astype('int64')
 df3["Hora_Salida"] = df3["Hora_Salida"].apply('{0:0>5}'.format)
 df3["Hora_Llegada"] = df3["Hora_Llegada"].apply('{0:0>5}'.format)
+rate = input("Please enter exchange rate MXN/USD: ")
+df3["Desde"] = df3["Desde"] * rate
 
 
 # In[26]:
