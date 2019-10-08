@@ -294,54 +294,64 @@ df3.dropna(inplace=True)
 df3["Desde"] = pd.to_numeric(df3["Desde"]).astype('float')
 df3["Hora_Salida"] = df3["Hora_Salida"].apply('{0:0>5}'.format)
 df3["Hora_Llegada"] = df3["Hora_Llegada"].apply('{0:0>5}'.format)
-rate = input("Please enter exchange rate MXN/USD: ")
-df3["Desde"] = df3["Desde"] * rate
 
 
-# In[26]:
+# In[28]:
+
+
+df3["Desde"] = df3["Desde"] * 19.52 #revisa por que no puedes multiplicar con una variable
+
+
+# In[30]:
+
+
+df3["Desde"] = df3["Desde"].astype('int64')
+
+
+# In[32]:
 
 
 grouped_df3 = df3.groupby(["Hora_Salida", "Destino"])
 ual_grouped = grouped_df3.min()
 
 
-# In[27]:
+# In[33]:
 
 
 ual_grouped.reset_index(inplace=True)
 
 
-# In[28]:
+# In[34]:
 
 
 amx_grouped["Name"] = "AMX"
 
 
-# In[29]:
+# In[35]:
 
 
 avi_grouped["Name"] = "AVI"
 
 
-# In[30]:
+# In[36]:
 
 
 ual_grouped["Name"] = "UAL"
 
 
-# In[31]:
+# In[37]:
 
 
 df4 = amx_grouped.append(avi_grouped, ignore_index=True)
 
 
-# In[32]:
+# In[38]:
 
 
 df5 = df4.append(ual_grouped, ignore_index = True)
 
 
-# In[33]:
+# In[39]:
 
 
 conditions = [
@@ -404,31 +414,31 @@ lon_choices = [-86.873455,
                -73.873987]
 
 
-# In[34]:
+# In[40]:
 
 
 df5["Lat"] = np.select(conditions, lat_choices, default="N/A")
 
 
-# In[35]:
+# In[41]:
 
 
 df5["Lon"] = np.select(conditions, lon_choices, default="N/A")
-df5["Desde"] = df5["Desde"].astype('int64')
 
-# In[36]:
+
+# In[42]:
 
 
 df5.to_csv("consolidated.csv")
 
 
-# In[37]:
+# In[43]:
 
 
 df5.to_json("consolidated_json.js", orient="records")
 
 
-# In[38]:
+# In[44]:
 
 
 from sqlalchemy import create_engine, inspect, func, MetaData
@@ -438,21 +448,27 @@ db_string = "postgres://dgvhnhvgmlvyas:9ec80f4b1f38b037e7f4ec194639c23e0a51391ba
 db = create_engine(db_string)
 
 
-# In[39]:
+# In[47]:
 
 
 tables = db.table_names()
 print(tables)
 
 
-# In[40]:
+# In[48]:
 
 
 day = input("Select a table (i.e. oct01): ")
 
 
-# In[41]:
+# In[49]:
 
 
 df5.to_sql(name=day, con=db, if_exists='append', index=False)
+
+
+# In[ ]:
+
+
+
 
