@@ -1,0 +1,101 @@
+{% extends "base.html" %} {% block content %}
+<script>
+    function $(x) {
+        return document.querySelectorAll(x);
+    }
+
+    $(".sidebar .sidebar-wrapper .nav li ")[0].classList.remove('active');
+    document.getElementById('sidebarAbout').className += " active"
+
+    document.getElementById('pageTitle').innerHTML = "About"
+</script>
+
+<div class="content">
+
+    <div class="content">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card ">
+                        <div class="card-header card-header-success card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">airplanemode_active</i>
+                            </div>
+                            <h4 class="card-title">Air Analytics</h4>
+                        </div>
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="https://images.unsplash.com/photo-1545922016-87c93aaca2ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80" style="width:100%;" alt="">
+                                </div>
+                                <div class="col-md-6">
+
+                                    <div class="article">
+                                        <div class="title">
+                                            <h2>Objective</h2>
+                                            <br>
+                                            <p>
+                                                At Air Analytics we set out to find out the true story behind airlines and their prices.
+                                                For this project, we selected <b>Nov 15th, 2019</b> as our target date to analyze, as it is a long weekend for Mexican workers.
+                                                It is more likely that the demand for flights for this weekend in particular will be high. We look forward to help you answer these questions:
+                                                <ul>
+                                                    <li>
+                                                        <p>Will the price increase as the departure day gets closer?</p>
+                                                    </li>
+                                                    <li>
+                                                        <p>Is there a day of the week when prices are lower?</p>
+                                                    </li>
+                                                    <li>
+                                                        <p>Why not just use websites such as 
+                                                            <a href="https://www.despegar.com.mx/"><b>Despegar.com</b></a>,
+                                                            or cellphone apps like <a href="https://www.hopper.com/"><b>Hopper</b>?</a></p>
+                                                    </li>
+
+                                                </ul>
+                                                It's a well known fact that airlines change prices constantly. They even use cookies to tell if you have been looking for a specific flight and adjust prices accordingly. As Data Scientists we shall uncover the truth.
+                                            </p>
+                                            <p>
+                                                Our team developed a Web-Scraping python app to get information from the following airlines:
+                                            </p>
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <ul>
+                                                            <li><a href="https://aeromexico.com/es-mx"><img src="https://logotipogratis.com/blog/wp-content/uploads/2019/08/aeromexico-logotipo.jpg" style="width:60%; height:60%"></a></li>
+                                                            <br>
+                                                            <li><a href="https://www.avianca.com/mx/es/"><img src="https://www.aviacol.net/images/stories/2017/Avianca/Logo_AV.jpg" style="width:60%; height:60%"></a></li>
+                                                            <li><a href="https://www.united.com/en/mx"><img src="https://seeklogo.net/wp-content/uploads/2017/04/united-airlines-logo-01.png" style="width:60%; height:60%"></a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <br><br>
+                                                        <a href="https://github.com/JanCastillo/Project_2--AirAnalytics"><img src="http://pngimg.com/uploads/github/github_PNG20.png" style="width:70%; height:50%"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row"></div>
+</div>
+</div>
+</div>
+
+
+
+
+
+{% endblock %}

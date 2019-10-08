@@ -1,0 +1,97 @@
+{% extends "base.html" %} {% block content %}
+<style>
+    #map {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background-color: rgb(229, 227, 223);
+    }
+</style>
+
+<script>
+    function $(x) {
+        return document.querySelectorAll(x);
+    }
+
+    $(".sidebar .sidebar-wrapper .nav li ")[0].classList.remove("active");
+    document.getElementById("sidebarMaps").className += " active";
+
+    document.getElementById("pageTitle").innerHTML = "Maps";
+</script>
+
+<div class="content">
+    <div class="content">
+        <div class="container-fluid">
+                <div class="row">
+                <div class="col-md-3">
+                        <div class="form-group  ">
+                                <label>Day</label><br>
+                                <select class="btn btn-black dropdown-toggle" id="map-day">
+                                        <option Value="oct01">octubre 01, 2019</option>
+                                        <option value="oct02">octubre 02, 2019</option>
+                                        <option value="oct03">octubre 03, 2019</option>
+                                        <option value="oct04">octubre 04, 2019</option>
+                                        <option value="oct05">octubre 05, 2019</option>
+                                        <option value="oct06">octubre 06, 2019</option>
+                                        <option value="oct06">octubre 07, 2019</option>
+                                        <option value="oct08">octubre 08, 2019</option>
+                                        </select>
+                            </div>
+                </div>
+                <div class="col-md-5">
+                        <div class="form-group  ">
+                                <label>Destination</label><br>
+                                <select class="btn btn-black dropdown-toggle" id="map-destination">
+                                        <option value="DEN">Denver</option>
+                                        <option value="CUN">Cancun</option>
+                                        <option value="HAV">Havana</option>
+                                        <option value="ORD">Chicago</option>
+                                        <option value="JFK">New York JFK</option >
+                                        <option value="LAX">Los Angeles</option>
+                                        <option value="BCN">Barcelona</option>
+                                        <option value="MAD">Madrid</option>
+                                        <option value="YYZ">Toronto</option>
+                                        <option value="MCO">Florida</option>
+                                        <option value="SFO">San Francisco</option>
+                                        <option value="LAS">Las Vegas</option>
+                                        <option value='MUC'>Munich</option>
+                                        <option value="YUL">Montreal</option>
+                                        <option value="MIA">Miami</option>
+                                        </select>
+                                        <button class="btn btn-danger" id="map-button">
+                                                <span class="btn-label">
+                                                  <i class="material-icons">assessment</i>
+                                                </span>
+                                                FLY
+                                              </button>
+                            </div>
+
+                    </div>
+            </div>
+                    <div class="card ">
+                        <div class="card-header card-header-success card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">where_to_vote</i>
+                            </div>
+                            <h4 class="card-title">Map</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="map map-big" style="position: relative; overflow: hidden;">
+                                <div id="map"></div>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/plots.js"></script>
+<script type="text/javascript" src="/static/js/MovingMarker.js"></script>
+<script type="text/javascript" src="/static/js/logic2.js"></script>
+
+
+{% endblock %}

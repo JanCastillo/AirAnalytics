@@ -1,0 +1,95 @@
+ {% extends "base.html" %} {% block content %}
+
+<style>
+    #map {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background-color: rgb(229, 227, 223);
+    }
+</style>
+
+
+<div class="content">
+
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="card ">
+                        <div class="card-header card-header-success card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">flight_takeoff</i>
+                            </div>
+                            <h4 class="card-title">AMX Latest Prices</h4>
+                        </div>
+                        <div class="card-body ">
+                                <div id="AMX-latest"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                        <div class="card ">
+                            <div class="card-header card-header-success card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">flight_takeoff</i>
+                                </div>
+                                <h4 class="card-title">AVI Latest Prices</h4>
+                            </div>
+                            <div class="card-body ">
+                                <div id="AVI-latest"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                            <div class="card ">
+                                <div class="card-header card-header-success card-header-icon">
+                                    <div class="card-icon">
+                                        <i class="material-icons">flight_takeoff</i>
+                                    </div>
+                                    <h4 class="card-title">UAL Latest Prices</h4>
+                                </div>
+                                <div class="card-body ">
+                                        <div id="UAL-latest"></div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- API key -->
+<script type="text/javascript" src="/static/js/config.js"></script>
+<!-- JS  -->
+<script type="text/javascript" src="/static/js/plots.js"></script>
+
+<!-- D3 Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="/static/js/data.js"></script>
+<script src="/static/js/plots.js"></script>
+
+<script>
+    function $(x) {
+        return document.querySelectorAll(x);
+    }
+
+    $(".sidebar .sidebar-wrapper .nav li ")[0].classList.remove('active');
+    document.getElementById('sidebarDashboard').className += " active"
+
+    document.getElementById('pageTitle').innerHTML = "Dashboard"
+</script>
+
+
+{% endblock %}

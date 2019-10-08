@@ -1,0 +1,1 @@
+web: gunicorn AirAnalytics_API.app:app

@@ -1,0 +1,121 @@
+{% extends "base.html" %} {% block content %}
+<script>
+    function $(x) {
+        return document.querySelectorAll(x);
+    }
+
+    $(".sidebar .sidebar-wrapper .nav li ")[0].classList.remove('active');
+    document.getElementById('sidebarAbout').className += " active"
+
+    document.getElementById('pageTitle').innerHTML = "Resources"
+</script>
+
+<div class="content">
+
+    <div class="content">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card ">
+                        <div class="card-header card-header-success card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">developer_board</i>
+                            </div>
+                            <h4 class="card-title">Reference</h4>
+                        </div>
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="https://images.unsplash.com/photo-1545922016-87c93aaca2ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80" style="width:100%;" alt="">
+                                </div>
+                                <div class="col-md-6">
+
+                                    <div class="article">
+                                        <div class="title">
+                                            <h1>Conclusion</h1>
+                                            <br>
+                                            <p>
+                                                At Air Analytics we want to tell the real story about airlines and its prices:
+                                                <ul>
+                                                    <li>
+                                                        <p>Is it real that the prices differ from the time of the day?</p>
+                                                    </li>
+                                                    <li>
+                                                        <p>Does the flight prices changes through day of the week?</p>
+                                                    </li>
+                                                    <li>
+                                                        <p>Can we search in real time for the best prices?</p>
+                                                    </li>
+
+                                                </ul>
+                                                It's well known that airlines change prices, and they even save your computer cookies to tell if you are looking for a specific flight. As Data Analysts we will demistify the truth.jumbotron-fluid.
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="https://images.unsplash.com/photo-1545922016-87c93aaca2ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80" style="width:100%;" alt="">
+                                </div>
+                                <div class="col-md-6">
+
+                                    <div class="article">
+                                        <div class="title">
+                                            <h1>Resources</h1>
+                                            <br>
+                                            <p>
+                                                As important as the code, there is a great deal with
+                                                <ul>
+                                                    <li>
+                                                        <p>Is it real that the prices differ from the time of the day?</p>
+                                                    </li>
+                                                    <li>
+                                                        <p>Does the flight prices changes through day of the week?</p>
+                                                    </li>
+                                                    <li>
+                                                        <p>Can we search in real time for the best prices?</p>
+                                                    </li>
+
+                                                </ul>
+                                                It's well known that airlines change prices, and they even save your computer cookies to tell if you are looking for a specific flight. As Data Analysts we will demistify the truth.jumbotron-fluid.
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row"></div>
+</div>
+</div>
+</div>
+
+
+
+<!-- D3 Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="/static/js/data.js"></script>
+<script src="/static/js/plots.js"></script>
+
+{% endblock %}
