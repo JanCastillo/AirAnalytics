@@ -8,5 +8,6 @@
 <li>Loop is used for testing</li>
 </ul>
 
-Link to the deployed app: <a href="https://airanalytics.herokuapp.com/">See website</a>
-Databased used: Heroku Postgress
+<p>Link to the deployed app: <a href="https://airanalytics.herokuapp.com/">See website</a></p>
+
+<p>Databased used: <b>Heroku Postgress</b></p>
