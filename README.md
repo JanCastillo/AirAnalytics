@@ -11,3 +11,13 @@
 <p>Link to the deployed app: <a href="https://airanalytics.herokuapp.com/">See website</a></p>
 
 <p>Databased used: <b>Heroku Postgress</b></p>
+
+<hr>
+
+<p>Developed by:<p>
+<ul>
+<li>Carlos Gutiérrez</li>
+<li>Luis Felipe Díaz</li>
+<li>Jan Andrés Castillo</li>
+<li>Raul Ayala</li>
+</ul>
