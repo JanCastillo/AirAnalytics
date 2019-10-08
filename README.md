@@ -1,4 +1,12 @@
 # Project_2--AirAnalytics
 
-If you can't see the Jupyter Notebook here in Github, please go to:
-https://nbviewer.jupyter.org/github/JanCastillo/Project_2--AirAnalytics/blob/master/Project_2%20--AirAnalytics.ipynb
+<ul>
+<li>Master branch is a reflection of the heroku repository</li>
+<li>Flask contains the web scrapping code</li>
+<li>Map includes the Leaflet code</li>
+<li>Dashboard consists of the website design</li>
+<li>Loop is used for testing</li>
+</ul>
+
+Link to the deployed app: <a href="https://airanalytics.herokuapp.com/">See website</a>
+Databased used: Heroku Postgress
