@@ -72,7 +72,7 @@ def plane(day, destino):
     choice.columns.Desde,
     choice.columns.Name
     ).\
-    filter(choice.columns.Destino == destino).order_by(choice.columns.Desde).all() #hay que convertir los precios de UAL a pesos para ya no meter condicionales
+    filter(choice.columns.Destino == destino).order_by(choice.columns.Desde).all()
     
     return jsonify(query2[0]) 
 
@@ -91,8 +91,6 @@ def latest():
     choice.columns.Name,
     ).\
     order_by(choice.columns.Destino).all()
-
-    #AGREGA UN ORDER BY PARA ORDENAR ALFABETICAMENTE EL DESTINO
 
     return jsonify(query3)
 
