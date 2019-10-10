@@ -79,7 +79,11 @@ def plane(day, destino):
 @app.route("/latest")
 def latest():
 
-    tables = db.table_names()
+    tables = []
+
+    for table in meta.sorted_tables:
+        tables.append(table.key)
+
     latest_table = tables[-1]
 
     choice = meta.tables[latest_table]
