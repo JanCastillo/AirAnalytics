@@ -372,7 +372,8 @@ conditions = [
     (df5["Destino"] == "DEN"),
     (df5["Destino"] == "YJB"),
     (df5["Destino"] == "EWR"),
-    (df5["Destino"] == "LGA")
+    (df5["Destino"] == "LGA"),
+    (df5["Destino"] == "XOC")
 ]
 
 lat_choices = [21.040358,
@@ -392,7 +393,8 @@ lat_choices = [21.040358,
                39.856121,
                41.3789,
                40.689588,
-               40.777065]
+               40.777065,
+               40.4075]
 
 lon_choices = [-86.873455,
                -82.410321,
@@ -411,7 +413,8 @@ lon_choices = [-86.873455,
                -104.673641,
                2.1400,
                -74.174430,
-               -73.873987]
+               -73.873987,
+               -3.6917]
 
 
 # In[40]:
@@ -457,7 +460,6 @@ meta.reflect(bind=db)
 tables = []
 
 for table in meta.sorted_tables:
-    print(table)
     tables.append(table.key)
 
 
