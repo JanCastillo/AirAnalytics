@@ -451,13 +451,19 @@ db = create_engine(db_string)
 # In[47]:
 
 
-tables = db.table_names()
-print(tables)
+session = Session(db)
+meta = MetaData()
+meta.reflect(bind=db)
+tables = []
+
+for table in meta.sorted_tables:
+    print(table)
+    tables.append(table.key)
 
 
 # In[48]:
 
-
+print(tables)
 day = input("Select a table (i.e. oct01): ")
 
 
