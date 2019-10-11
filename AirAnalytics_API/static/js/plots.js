@@ -102,7 +102,7 @@ d3.json(latest).then((x) => {
     Plotly.newPlot('AVI-latest', AVI_table, table_layout);
     Plotly.newPlot('UAL-latest', UAL_table, table_layout);
 
-});
+}); //sacar esta seccion a otro js.file para que solo se llame en index.html
 
 table_data.on("click", function() {
     let day_value = table_day.property("value");
@@ -138,17 +138,13 @@ add.on("click", function() {
 function buildcharts(day, line, dest) {
 
     daystring = `/day/${day}`
-    console.log(daystring);
+
     d3.json(daystring).then((x) => {
 
         let airline = x.filter(y => y[5] === line);
         let air = airline.filter(z => z[1] === dest);
         let air_salidas = air.map(s => s[0]);
-        let air_destino = air.map(s => s[1]);
-        let air_origen = air.map(s => s[2]);
-        let air_llegadas = air.map(s => s[3]);
         let air_precios = air.map(p => p[4]);
-        let air_aerolinea = air.map(s => s[5]);
 
         let trace1 = {
             x: air_salidas,
@@ -159,24 +155,42 @@ function buildcharts(day, line, dest) {
         let layout1 = {
             autosize: true,
             xaxis: { title: "Hora" },
-            yaxis: { title: "Precio (MXN / USD)" },
+            yaxis: { title: "Precio (MXN)" },
 
         };
 
         Plotly.newPlot("plot1", [trace1], layout1);
 
-        console.log(airline);
+    });
 
-        let data = [{
+    compstring = `/comparison/${dest}/${line}`
+    d3.json(compstring).then((x) => {
+
+        console.log(x);
+
+        let tables = x.map(t => t.Table);
+        let days = x.map(d => d.Day);
+        let saldesd = x.map(s => s.Saldesd);
+
+        let table_layout = {
+            margin: {
+                t: 20, //top margin
+                l: 20, //left margin
+                r: 20, //right margin
+                b: 20 //bottom margin
+                }
+        }; 
+
+        let data1 = [{
             type: 'table',
             header: {
                 values: [
-                    ["<b>Aerolinea</b>"],
-                    ["<b>Hora Salida</b>"],
-                    ["<b>Hora Llegada</b>"],
-                    ["<b>Origen</b>"],
-                    ["<b>Destino</b>"],
-                    ["<b>Menor Precio</b>"]
+                    [`${tables[0]}<br>${days[0]}`],
+                    [`${tables[1]}<br>${days[1]}`],
+                    [`${tables[2]}<br>${days[2]}`],
+                    [`${tables[3]}<br>${days[3]}`],
+                    [`${tables[4]}<br>${days[4]}`],
+                    [`${tables[5]}<br>${days[5]}`]
                 ],
                 align: "center",
                 line: { width: 1, color: 'black' },
@@ -184,22 +198,83 @@ function buildcharts(day, line, dest) {
                 font: { family: "Arial", size: 12, color: "white" }
             },
             cells: {
-                values: [air_aerolinea, air_salidas, air_llegadas, air_origen, air_destino, air_precios],
+                values: [
+                    saldesd[0], 
+                    saldesd[1], 
+                    saldesd[2],
+                    saldesd[3],
+                    saldesd[4],
+                    saldesd[5]
+                ],
                 align: "center",
                 line: { color: "black", width: 1 },
                 font: { family: "Arial", size: 11, color: ["black"] }
             }
         }]
 
-        Plotly.newPlot('plot2', data);
+        Plotly.newPlot('plot2', data1, table_layout);
+
+        let data2 = [{
+            type: 'table',
+            header: {
+                values: [
+                    [`${tables[6]}<br>${days[6]}`],
+                    [`${tables[7]}<br>${days[7]}`],
+                    [`${tables[8]}<br>${days[8]}`]
+                ],
+                align: "center",
+                line: { width: 1, color: 'black' },
+                fill: { color: "grey" },
+                font: { family: "Arial", size: 12, color: "white" }
+            },
+            cells: {
+                values: [
+                    saldesd[6],
+                    saldesd[7],
+                    saldesd[8],
+                ],
+                align: "center",
+                line: { color: "black", width: 1 },
+                font: { family: "Arial", size: 11, color: ["black"] }
+            }
+        }]
+
+        Plotly.newPlot('plot3', data2, table_layout);
+
+        d3.json(daystring).then((x) => {
+            let airline = x.filter(y => y[5] === line);
+            let air = airline.filter(z => z[1] === dest);
+            let air_salidas = air.map(s => s[0]);
+
+            let data3 = [{
+                type: 'table',
+                header: {
+                    values: [
+                        ["<b>Hora<br>Salida</b>"]
+                    ],
+                    align: "center",
+                    line: { width: 1, color: 'black' },
+                    fill: { color: "grey" },
+                    font: { family: "Arial", size: 12, color: "white" }
+                },
+                cells: {
+                    values: [air_salidas],
+                    align: "center",
+                    line: { color: "black", width: 1 },
+                    font: { family: "Arial", size: 11, color: ["black"] }
+                }
+            }]
+
+            Plotly.newPlot('plot4', data3, table_layout);
+            Plotly.newPlot('plot5', data3, table_layout);
+
+        })
 
     });
-
 }
 
 function addtraces(day, line, dest) {
     daystring = `/day/${day}`
-    console.log(daystring);
     d3.json(daystring).then((x) => {
 
         let airline = x.filter(y => y[5] === line);
