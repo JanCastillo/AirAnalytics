@@ -299,7 +299,7 @@ df3["Hora_Llegada"] = df3["Hora_Llegada"].apply('{0:0>5}'.format)
 # In[28]:
 
 
-df3["Desde"] = df3["Desde"] * 19.21 #revisa por que no puedes multiplicar con una variable
+df3["Desde"] = df3["Desde"] * 19.1 #revisa por que no puedes multiplicar con una variable
 
 
 # In[30]:
